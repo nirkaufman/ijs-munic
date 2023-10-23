@@ -6,7 +6,7 @@ export default function Home() {
       <>
        <h1>IJS Munich - NextJS workshop</h1>
        <h2>https://github.com/nirkaufman/ijs-munic</h2>
-       <Link href="/blog/nir">go to blog</Link>
+       <Link href="/blog">go to blog</Link>
      </>
   )
 }

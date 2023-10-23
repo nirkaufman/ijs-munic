@@ -1,15 +1,23 @@
 import Link from "next/link";
 
-export default function BlogPage() {
+async function fetchPosts() {
+  const posts = await fetch("https://jsonplaceholder.typicode.com/posts")
+  return posts.json();
+}
+
+export default async function BlogPage() {
+  const posts = await fetchPosts();
+
   return (
     <div>
       <h1>Blog</h1>
-      <p>This is the blog page.</p>
-      <ul>
-        <Link href={`/blog/${1}`}><li>post #1</li></Link>
-        <Link href={`/blog/${2}`}><li>post #2</li></Link>
-        <Link href={`/blog/${3}`}><li>post #3</li></Link>
-      </ul>
+      {posts.map((post: any) => (
+        <div key={post.id}>
+          <Link href={`/blog/${post.id}`}>
+            {post.title}
+          </Link>
+        </div>
+      ))}
     </div>
   )
 }
