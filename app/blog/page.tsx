@@ -1,10 +1,13 @@
 import Link from "next/link";
+import {fetchPosts} from "@/services/posts";
 
-async function fetchPosts() {
-  const posts = await fetch("https://jsonplaceholder.typicode.com/posts")
-  return posts.json();
-}
 
+export const revalidate = 10; // seconds
+
+// best practice to create a function to fetch data above the component
+// considered to be more "clean" and "readable"
+
+// async components are not supported in client-side React
 export default async function BlogPage() {
   const posts = await fetchPosts();
 
