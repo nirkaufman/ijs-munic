@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export default function Home() {
+  const obj = {};
   return (
       <>
        <h1>IJS Munich - NextJS workshop</h1>
