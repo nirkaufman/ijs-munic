@@ -7,7 +7,10 @@ interface OwnProps {
 export default function RootLayout({children}: OwnProps) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+      <h1>Root Layout Title</h1>
+      {children}
+      </body>
     </html>
   )
 }
