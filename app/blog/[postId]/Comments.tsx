@@ -1,11 +1,17 @@
+import {ReloadComments} from "@/app/blog/[postId]/ReloadComments";
+
 function wait(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function fetchCommentsForPost(postId: string): Promise<any> {
-  await wait(2000);
   const comments = await fetch(
       `https://jsonplaceholder.typicode.com/posts/${postId}/comments`,
+      {
+        next: {
+          tags: ['comments'],
+        }
+      }
   )
 
   return comments.json();
@@ -16,6 +22,7 @@ export default async function Comments({postId}: {postId: string}) {
 
   return (
       <div>
+        <ReloadComments />
         <h3>Comments:</h3>
         {comments.map((comment: any) => (
             <div key={comment.id}>
