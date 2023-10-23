@@ -1,6 +1,6 @@
 'use client';
 
-import {reloadComments, validateCacheForRoute} from "@/services/revlidate-utils";
+import {reloadComments} from "@/services/revlidate-utils";
 
 export function ReloadComments() {
 

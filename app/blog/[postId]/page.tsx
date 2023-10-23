@@ -19,6 +19,20 @@ interface PostDetailsProps {
   }
 }
 
+export async function generateStaticParams() {
+  return fetch('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => response.json())
+      .then((posts) => {
+        return posts.map((post: any) => {
+          return {
+            params: {
+              postId: `${post.id}`,
+            },
+          }
+        })
+      })
+}
+
 export default async function PostDetails({params: {postId}}: PostDetailsProps) {
   const post =  await fetchPostData(postId);
 
